@@ -61,7 +61,7 @@ function salvarMedico(){
 
 function listarMedico(){        
     var nome  = $("input[name='nomeConsulta']").val();
-    var crm  = $("input[name='crm']").val();
+    var crm = $("input[name='crmConsulta']").val();
     $.ajax({
         type: 'POST',
         url: "controladores/IndexControlador.php",
