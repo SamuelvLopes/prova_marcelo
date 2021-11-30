@@ -1,8 +1,8 @@
 <?php    
-    session_start();
+    //session_start();
     header('Content-Type: text/html; charset=utf-8');
     include("../inc/autoload.php");
-    
+    //exit();
     ###################### JSON ######################
     $arrStrJson             = null;
     $arrStrJson["statusOp"] = "false";
