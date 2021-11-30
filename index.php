@@ -12,7 +12,7 @@ Sobre a pagina web:
 3- A consulta pelo crm não está funcionando.-ok!
 4- Quando a consulta não traz nenhum dado a tabela está aparecendo "quebrada". -??
 5- Fazer com que após o cadastro ou alteração o sistema volte para a 1ª aba exibindo os dados atualizado.  -ok
-6- Fazer a rotina de exclusão do registro.
+6- Fazer a rotina de exclusão do registro. -ok
 7- Colocar uma máscara no campo de telefone que se adeque aos tipos de telefones atuais ex: (81)99874-6354 e (81)3535-0135  
 8- Observe que no banco existe uma tabela de "especialidade" é preciso fazer uma ligação com esta tabela e a tabela de médico.
 É preciso alterar a aba de cadastro para que a "especialidade" seja listada em input do tipo select e que seja levada em conta
@@ -37,7 +37,7 @@ no momento do registrar o médico.
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
     <!-- JS da Aplicacao -->
     <script src="index.js"></script>
-        
+        <script type="text/javascript" src="jquery.maskedinput-1.1.4.pack.js"></script>
   </head>
 
 <body >
@@ -127,7 +127,7 @@ no momento do registrar o médico.
                                     <div class="form-group">
                                         <label for="crm" class="control-label col-sm-2" >Telefone</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="telefone" class="form-control" placeholder="Seu telefone" >
+                                            <input type="text" name="telefone" id='telefone' class="form-control" placeholder="Seu telefone" >
                                         </div>
                                     </div>
                                 </div>

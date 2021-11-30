@@ -1,4 +1,10 @@
-function salvarMedico(){
+
+    $(document).ready(function(){
+        $("#telefone").mask("(99) 9 9999-9999");
+
+	});
+
+function salvarMedico() {
     var id  = $("input[name='id']").val();
     var nome  = $("input[name='nome']").val();
     var crm  = $("input[name='crm']").val();
