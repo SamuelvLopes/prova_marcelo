@@ -14,7 +14,13 @@ class NegMedico {
         $objRepoMedico = new RepoMedico();
         return $objRepoMedico->alterar($obj);
     }
-    
+
+    public function excluirMedico($dadosPost){
+        $obj = $this->factory($dadosPost);
+        $objRepoMedico = new RepoMedico();
+        return $objRepoMedico->excluir($obj);
+    }
+
     private function factory($dados){
         $objMedico = new Medico();
         if(isset($dados["id"])){

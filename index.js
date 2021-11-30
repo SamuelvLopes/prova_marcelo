@@ -41,8 +41,10 @@ function salvarMedico(){
             }else{
                 bootbox.alert({                            
                     message: '<div class="alert alert-success"><strong>'+data.msgOp+'</strong></div>',
-                    title: "Sucesso!"    
-                });                        
+                    title: "Sucesso!"
+                    
+                });
+                document.getElementById('medicos-cadastrados').click();
                 $("#formCadastro")[0].reset();
             }
         },
@@ -121,7 +123,30 @@ function editar(idMedico){
 }
 
 function excluir(idMedico){
-
+    $.ajax({
+        type: 'POST',
+        url: "controladores/IndexControlador.php",
+        data: { ACO_Descricao: 'Excluir', id: idMedico },
+        dataType: 'json',
+        async: false, // assincrono / nÃ£o assincrono
+        encode: true,
+        beforeSend: function () { },
+        success: function (data) {
+            
+                bootbox.alert({
+                    message: '<div class="alert alert-danger"><strong>' + data.msgOp + '</strong></div>',
+                    title: "Sucesso!!"
+                });
+            
+        },
+        error: function (xhr) {
+            bootbox.alert({
+                message: '<div class="alert alert-danger"><strong>' + xhr.statusText + xhr.responseText + '</strong></div>',
+                title: "Erro"
+            });
+        },
+        complete: function () { }
+    }).done(function () { });
 }
 
 function preencherDadosTelaAlteracao(objEntrada){

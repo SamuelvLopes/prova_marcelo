@@ -9,9 +9,9 @@ Sobre o ecosistema do PHP:
 Sobre a pagina web:
 
 2- O campo crm está sendo gravado no campo do telefone. -ok!
-3- A consulta pelo crm não está funcionando.
-4- Quando a consulta não traz nenhum dado a tabela está aparecendo "quebrada".
-5- Fazer com que após o cadastro ou alteração o sistema volte para a 1ª aba exibindo os dados atualizado. 
+3- A consulta pelo crm não está funcionando.-ok!
+4- Quando a consulta não traz nenhum dado a tabela está aparecendo "quebrada". -??
+5- Fazer com que após o cadastro ou alteração o sistema volte para a 1ª aba exibindo os dados atualizado.  -ok
 6- Fazer a rotina de exclusão do registro.
 7- Colocar uma máscara no campo de telefone que se adeque aos tipos de telefones atuais ex: (81)99874-6354 e (81)3535-0135  
 8- Observe que no banco existe uma tabela de "especialidade" é preciso fazer uma ligação com esta tabela e a tabela de médico.
@@ -53,7 +53,7 @@ no momento do registrar o médico.
             <h2 class="text-center">Cadastro de Médico</h2>
             
             <ul id="myTab" class="nav nav-tabs">
-                <li class="active"><a href="#tab1" data-toggle="tab">Médicos Cadastradas</a></li>
+                <li class="active"><a href="#tab1" id='medicos-cadastrados' data-toggle="tab">Médicos Cadastrados</a></li>
                 <li><a href="#tab2" data-toggle="tab">Novo Cadastro*</a></li>
             </ul>
             <div class="tab-content">

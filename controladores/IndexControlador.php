@@ -38,7 +38,17 @@
                         $arrStrJson["msgOp"] = "Alteração não realizada!";
                     }
                 }elseif($strAcao == "Excluir"){
-                    
+                   
+                $objNegMedico = new NegMedico();
+
+                    if($objNegMedico->excluirMedico($_POST)){
+                        $arrStrJson["statusOp"] = "true";
+                        $arrStrJson["msgOp"] = "exclusão realizada com sucesso!";
+                    }else{
+                        $arrStrJson["statusOp"] = "false";
+                        $arrStrJson["msgOp"] = "exclusão não realizada!";
+                    }
+
                     
                 }elseif($strAcao == "Listar"){                                        
                     $objNegMedico = new NegMedico();

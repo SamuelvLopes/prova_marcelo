@@ -47,4 +47,10 @@ class RepoMedico {
         $sql.=" WHERE id = ".$obj->getId()." ";          
         return Db::getInstance()->executar($sql);
     }
+    public function excluir(Medico $obj){
+        $sql =" DELETE FROM `medico`";      
+        $sql.=" WHERE id = ".$obj->getId()." ";          
+        return Db::getInstance()->executar($sql);
+    }
+
 }
