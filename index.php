@@ -3,12 +3,12 @@ Tarefas a serem realizadas:
 
 Sobre o ecosistema do PHP:
 
-0- Instalar servidor "xampp" ou similar para poder executar o mysql o apache e o php
-1- Existe um arquivo em testePHP\conexao\modeloER com o sql do banco, é necessário rodar ele.
+0- Instalar servidor "xampp" ou similar para poder executar o mysql o apache e o php -ok!
+1- Existe um arquivo em testePHP\conexao\modeloER com o sql do banco, é necessário rodar ele.-ok!
 
 Sobre a pagina web:
 
-2- O campo crm está sendo gravado no campo do telefone.
+2- O campo crm está sendo gravado no campo do telefone. -ok!
 3- A consulta pelo crm não está funcionando.
 4- Quando a consulta não traz nenhum dado a tabela está aparecendo "quebrada".
 5- Fazer com que após o cadastro ou alteração o sistema volte para a 1ª aba exibindo os dados atualizado. 
@@ -109,7 +109,7 @@ no momento do registrar o médico.
                                     <div class="form-group">
                                         <label for="nome" class="control-label col-sm-2" >Nome*</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="nome" class="form-control" placeholder="Seu nome" >
+                                            <input type="text" name="nome" class="form-control" placeholder="Seu nome" required>
                                         </div>
                                     </div>                            
                                 </div>
@@ -118,7 +118,7 @@ no momento do registrar o médico.
                                     <div class="form-group">
                                         <label for="crm" class="control-label col-sm-2" >CRM*</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="crm" class="form-control" placeholder="Seu CRM" >
+                                            <input type="text" name="crm" class="form-control" placeholder="Seu CRM" required>
                                         </div>
                                     </div>                            
                                 </div>

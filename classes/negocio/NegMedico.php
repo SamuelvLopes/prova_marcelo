@@ -27,7 +27,7 @@ class NegMedico {
             $objMedico->setCrm($dados["crm"]);
         }
         if(isset($dados["telefone"])){
-            $objMedico->setTelefone($dados["crm"]);
+            $objMedico->setTelefone($dados["telefone"]);
         }        
         return $objMedico;
     }

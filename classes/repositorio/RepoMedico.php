@@ -34,7 +34,7 @@ class RepoMedico {
         $sql.=" )values( ";
         $sql.= "'".$obj->getNome()."', ";
         $sql.= "'".$obj->getCrm()."', ";
-        $sql.= "'".$obj->getTelefone()."' ";        
+        $sql.= "'".$obj->getTelefone()."' ";   
         $sql.=" ) ";        
         return Db::getInstance()->executar($sql);
     }
