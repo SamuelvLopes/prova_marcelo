@@ -39,9 +39,7 @@ class RepoMedico {
         $sql.= "'".$obj->getTelefone()."', ";
         $sql.= "'".$obj->getEspecialidade()."' ";   
         $sql.=" ) ";
-       // var_dump($obj->getEspecialidade());
-        //echo $sql;
-       // var_dump(Db::getInstance()->executar($sql));
+       
         return Db::getInstance()->executar($sql);
     }
     

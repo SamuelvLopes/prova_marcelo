@@ -59,7 +59,6 @@
                     $arrStrJson["statusOp"] = "true";                        
                 }elseif($strAcao == "Consultar"){                    
                     $objNegMedico = new NegMedico();
-                    //var_dump($_POST);
                     $objetoMedicoJson = $objNegMedico->consultaMedicoEdicao($_POST);  
                     if($objetoMedicoJson!=null){
                         $arrStrJson["msgOp"]="";

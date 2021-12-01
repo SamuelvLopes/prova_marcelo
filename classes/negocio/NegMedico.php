@@ -145,12 +145,12 @@ class NegMedico {
     }
     
     public function consultaMedicoEdicao($dadosFiltro){
-    //var_dump($dadosFiltro);
+   
         $listaMedico = $this->consultarMedico($dadosFiltro); 
-       //var_dump($listaMedico);
+      
         if($listaMedico!=null){
             $objMedico = $listaMedico[0];
-            // var_dump( $objMedico->getId());
+           
             return json_encode(array(
                 'id' => $objMedico->getId(),
                 'nome' => $objMedico->getNome(),
