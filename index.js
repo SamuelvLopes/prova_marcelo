@@ -47,6 +47,7 @@ function salvarMedico() {
                     
                 });
                 document.getElementById('medicos-cadastrados').click();
+                document.location.reload(true);
                 $("#formCadastro")[0].reset();
             }
         },
@@ -157,7 +158,7 @@ function preencherDadosTelaAlteracao(objEntrada){
     $("input[name='nome']").val(obj.nome);
     $("input[name='crm']").val(obj.crm);
     $("input[name='telefone']").val(obj.telefone);
-    //console.log(obj.especialidade);
+   
     document.getElementById('id_especialidade').value = obj.especialidade;
     $('#myTab a[href="#tab2"]').tab('show');
 }
