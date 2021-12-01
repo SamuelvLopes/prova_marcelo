@@ -4,13 +4,15 @@ class NegMedico {
     public function __construct(){}
     
     public function salvarMedico($dadosPost){
-    //var_dump($dadosPost);
+    
         $obj = $this->factory($dadosPost);
+        
         $objRepoMedico = new RepoMedico();
         return $objRepoMedico->salvar($obj);
     }
     
     public function alterarMedico($dadosPost){
+    
         $obj = $this->factory($dadosPost);
         $objRepoMedico = new RepoMedico();
         return $objRepoMedico->alterar($obj);
@@ -24,6 +26,7 @@ class NegMedico {
 
     private function factory($dados){
         $objMedico = new Medico();
+        
         if(isset($dados["id"])){
             $objMedico->setId($dados["id"]);
         }
@@ -36,14 +39,16 @@ class NegMedico {
         if(isset($dados["telefone"])){
             $objMedico->setTelefone($dados["telefone"]);
         }  
-        if(isset($dados["especialidade"])){
-            $objMedico->setEspecialidade($dados["especialidade"]);
+        if(isset($dados["id_especialidade"])){
+            $objMedico->setEspecialidade($dados["id_especialidade"]);
+            
         }
         return $objMedico;
     }
     
     private function consultarMedico($dadosFiltro) {
-        $dadosFiltroConsulta = $this->trataConsulta($dadosFiltro);        
+        $dadosFiltroConsulta = $this->trataConsulta($dadosFiltro);  
+       // var_dump($dadosFiltroConsulta);
         $objRepoMedico = new RepoMedico();
         $arrDadosMedico = $objRepoMedico->listar($dadosFiltroConsulta);         
         $listaObjMedico=null;
@@ -51,18 +56,22 @@ class NegMedico {
             foreach ($arrDadosMedico as $dadoMedico) {
                 $listaObjMedico[] = $this->factory($dadoMedico);
             }
+         //   var_dump($listaObjMedico);
         }
         return $listaObjMedico;
     }
     
     public function listarMedico($dadosFiltro){        
-        $listaMedico = $this->consultarMedico($dadosFiltro);        
+
+        $listaMedico = $this->consultarMedico($dadosFiltro);  
+        //var_dump($dadosFiltro);
         $htmlRetorno = '<table class="table table-striped">';
             $htmlRetorno .= '<thead>';
                 $htmlRetorno .= '<tr>';
                     $htmlRetorno .= '<th>ID</th>';
                     $htmlRetorno .= '<th>Nome</th>';
                     $htmlRetorno .= '<th>CRM</th>';
+                    $htmlRetorno .= '<th>Especialidade</th>';
                     $htmlRetorno .= '<th>Telefone</th>';
                     $htmlRetorno .= '<th>Ação</th>';
                 $htmlRetorno .= '</tr>';
@@ -71,6 +80,7 @@ class NegMedico {
         
             if($listaMedico!=null){
                 foreach ($listaMedico as $objMedico) {
+                
                     $htmlRetorno .= '<tr>';
                         $htmlRetorno .= '<td>';
                             $htmlRetorno .= $objMedico->getId();                    
@@ -80,6 +90,9 @@ class NegMedico {
                         $htmlRetorno .= '</td>';
                         $htmlRetorno .= '<td>';
                             $htmlRetorno .= $objMedico->getCrm();                    
+                        $htmlRetorno .= '</td>';
+                        $htmlRetorno .= '<td>';
+                            $htmlRetorno .= $objMedico->getEspecialidade();                    
                         $htmlRetorno .= '</td>';
                         $htmlRetorno .= '<td>';
                             $htmlRetorno .= $objMedico->getTelefone();                    
@@ -123,18 +136,27 @@ class NegMedico {
                 $dadosFiltroConsulta["telefone"] = trim($dadosFiltro["telefone"]);
             }
         }
+        if(isset($dadosFiltro["id_especialidade"])){
+            if(strlen(trim($dadosFiltro["id_especialidade"]))>0){
+                $dadosFiltroConsulta["id_especialidade"] = trim($dadosFiltro["id_especialidade"]);
+            }
+        }
         return $dadosFiltroConsulta;
     }
     
     public function consultaMedicoEdicao($dadosFiltro){
+    //var_dump($dadosFiltro);
         $listaMedico = $this->consultarMedico($dadosFiltro); 
+       //var_dump($listaMedico);
         if($listaMedico!=null){
             $objMedico = $listaMedico[0];
+            // var_dump( $objMedico->getId());
             return json_encode(array(
                 'id' => $objMedico->getId(),
                 'nome' => $objMedico->getNome(),
                 'crm' => $objMedico->getCrm(),
-                'telefone' => $objMedico->getTelefone()                
+                'telefone' => $objMedico->getTelefone(),
+                'especialidade'=>$objMedico->getEspecialidade()
             ));
         }else{
             return null;

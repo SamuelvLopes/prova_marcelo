@@ -22,7 +22,8 @@ class RepoMedico {
         }
         if(isset($dadosConsulta["telefone"])){
             $sql.=" AND telefone = '".$dadosConsulta["telefone"]."' ";
-        }        
+        }       
+        
         return Db::getInstance()->select($sql);
     }
     
@@ -40,7 +41,7 @@ class RepoMedico {
         $sql.=" ) ";
        // var_dump($obj->getEspecialidade());
         //echo $sql;
-        //var_dump($sql);
+       // var_dump(Db::getInstance()->executar($sql));
         return Db::getInstance()->executar($sql);
     }
     
@@ -48,8 +49,10 @@ class RepoMedico {
         $sql =" UPDATE medico SET ";
         $sql.=" nome = '".$obj->getNome()."',";
         $sql.=" crm = '".$obj->getCrm()."',";
+        $sql.=" id_especialidade = '".$obj->getEspecialidade()."',";
         $sql.=" telefone = '".$obj->getTelefone()."'";        
-        $sql.=" WHERE id = ".$obj->getId()." ";          
+        $sql.=" WHERE id = ".$obj->getId()." ";   
+       
         return Db::getInstance()->executar($sql);
     }
     public function excluir(Medico $obj){

@@ -2,7 +2,7 @@ function salvarMedico() {
     var id  = $("input[name='id']").val();
     var nome  = $("input[name='nome']").val();
     var crm = $("input[name='crm']").val();
-    var especialidade = document.getElementById('especialidade').value;
+    var especialidade = document.getElementById('id_especialidade').value;
     var telefone = $("input[name='telefone']").val();
     console.log(especialidade);
     if(!nome){
@@ -157,6 +157,8 @@ function preencherDadosTelaAlteracao(objEntrada){
     $("input[name='nome']").val(obj.nome);
     $("input[name='crm']").val(obj.crm);
     $("input[name='telefone']").val(obj.telefone);
+    //console.log(obj.especialidade);
+    document.getElementById('id_especialidade').value = obj.especialidade;
     $('#myTab a[href="#tab2"]').tab('show');
 }
 
