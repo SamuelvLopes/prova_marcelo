@@ -1,9 +1,10 @@
 function salvarMedico() {
     var id  = $("input[name='id']").val();
     var nome  = $("input[name='nome']").val();
-    var crm  = $("input[name='crm']").val();
-    var telefone  = $("input[name='telefone']").val();
-
+    var crm = $("input[name='crm']").val();
+    var especialidade = document.getElementById('especialidade').value;
+    var telefone = $("input[name='telefone']").val();
+    console.log(especialidade);
     if(!nome){
         bootbox.alert({                        
             message: '<div class="alert alert-danger"><strong>Falta o nome!</strong></div>',
@@ -26,7 +27,8 @@ function salvarMedico() {
     $.ajax({
         type: 'POST',
         url: "controladores/IndexControlador.php",
-        data: {ACO_Descricao: acao, id: id, nome: nome, crm: crm, telefone: telefone},
+        data: {
+            ACO_Descricao: acao, id: id, nome: nome, crm: crm, telefone: telefone, especialidade:especialidade        },
         dataType: 'json',
         async: false, // assincrono / nÃ£o assincrono
         encode: true,

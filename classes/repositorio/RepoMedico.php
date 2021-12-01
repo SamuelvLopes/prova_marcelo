@@ -30,12 +30,17 @@ class RepoMedico {
         $sql =" Insert into medico (";
         $sql.=" nome,";
         $sql.=" crm,";
-        $sql.=" telefone ";
+        $sql.=" telefone,";
+        $sql.=" id_especialidade";
         $sql.=" )values( ";
         $sql.= "'".$obj->getNome()."', ";
         $sql.= "'".$obj->getCrm()."', ";
-        $sql.= "'".$obj->getTelefone()."' ";   
-        $sql.=" ) ";        
+        $sql.= "'".$obj->getTelefone()."', ";
+        $sql.= "'".$obj->getEspecialidade()."' ";   
+        $sql.=" ) ";
+       // var_dump($obj->getEspecialidade());
+        //echo $sql;
+        //var_dump($sql);
         return Db::getInstance()->executar($sql);
     }
     

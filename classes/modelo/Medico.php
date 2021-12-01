@@ -4,6 +4,7 @@ class Medico{
     private $nome;
     private $crm;
     private $telefone;
+    private $especialidade;
     
     function getId() {
         return $this->id;
@@ -20,7 +21,9 @@ class Medico{
     function getTelefone() {
         return $this->telefone;
     }
-
+    function getEspecialidade() {
+        return $this->especialidade;
+    }
     function setId($id) {
         $this->id = $id;
     }
@@ -36,5 +39,7 @@ class Medico{
     function setTelefone($telefone) {
         $this->telefone = $telefone;
     }
-
+    function setEspecialidade($especialidade) {
+        $this->especialidade = $especialidade;
+    }
 }

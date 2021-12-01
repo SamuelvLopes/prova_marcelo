@@ -4,6 +4,7 @@ class NegMedico {
     public function __construct(){}
     
     public function salvarMedico($dadosPost){
+    //var_dump($dadosPost);
         $obj = $this->factory($dadosPost);
         $objRepoMedico = new RepoMedico();
         return $objRepoMedico->salvar($obj);
@@ -34,7 +35,10 @@ class NegMedico {
         }
         if(isset($dados["telefone"])){
             $objMedico->setTelefone($dados["telefone"]);
-        }        
+        }  
+        if(isset($dados["especialidade"])){
+            $objMedico->setEspecialidade($dados["especialidade"]);
+        }
         return $objMedico;
     }
     
