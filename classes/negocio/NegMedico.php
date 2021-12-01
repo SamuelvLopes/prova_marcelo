@@ -48,7 +48,7 @@ class NegMedico {
     
     private function consultarMedico($dadosFiltro) {
         $dadosFiltroConsulta = $this->trataConsulta($dadosFiltro);  
-       // var_dump($dadosFiltroConsulta);
+      
         $objRepoMedico = new RepoMedico();
         $arrDadosMedico = $objRepoMedico->listar($dadosFiltroConsulta);         
         $listaObjMedico=null;
@@ -56,7 +56,7 @@ class NegMedico {
             foreach ($arrDadosMedico as $dadoMedico) {
                 $listaObjMedico[] = $this->factory($dadoMedico);
             }
-         //   var_dump($listaObjMedico);
+        
         }
         return $listaObjMedico;
     }
@@ -64,14 +64,14 @@ class NegMedico {
     public function listarMedico($dadosFiltro){        
 
         $listaMedico = $this->consultarMedico($dadosFiltro);  
-        //var_dump($dadosFiltro);
+       
         $htmlRetorno = '<table class="table table-striped">';
             $htmlRetorno .= '<thead>';
                 $htmlRetorno .= '<tr>';
                     $htmlRetorno .= '<th>ID</th>';
                     $htmlRetorno .= '<th>Nome</th>';
                     $htmlRetorno .= '<th>CRM</th>';
-                    $htmlRetorno .= '<th>Especialidade</th>';
+                    $htmlRetorno .= '<th>Cod. Especialidade</th>';
                     $htmlRetorno .= '<th>Telefone</th>';
                     $htmlRetorno .= '<th>Ação</th>';
                 $htmlRetorno .= '</tr>';
@@ -106,7 +106,7 @@ class NegMedico {
                 }
             }else{
                 $htmlRetorno .= '<tr>';
-                    $htmlRetorno .= '<td colspan="4">Nenhum médico encontrado!</td>';            
+                    $htmlRetorno .= '<td colspan="6">Nenhum médico encontrado!</td>';            
                 $htmlRetorno .= '</tr>';
             }
             $htmlRetorno .= '</tbody>';
