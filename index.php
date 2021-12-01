@@ -37,7 +37,8 @@ no momento do registrar o médico.
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
     <!-- JS da Aplicacao -->
     <script src="index.js"></script>
-        <script type="text/javascript" src="jquery.maskedinput-1.1.4.pack.js"></script>
+    <!-- Jquery -->
+    <script type="text/javascript" src="jquery.maskedinput-1.1.4.pack.js"></script>
   </head>
 
 <body >
@@ -127,7 +128,7 @@ no momento do registrar o médico.
                                     <div class="form-group">
                                         <label for="crm" class="control-label col-sm-2" >Telefone</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="telefone" id='telefone' class="form-control" placeholder="Seu telefone" >
+                                            <input type="text" name="telefone" id='telefone'onkeydown="javascript: fMasc( this, mTel );"  maxlength="14" class="form-control" placeholder="Seu telefone" >
                                         </div>
                                     </div>
                                 </div>
