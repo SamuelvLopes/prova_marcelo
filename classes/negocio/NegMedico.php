@@ -8,17 +8,22 @@ class NegMedico {
         $obj = $this->factory($dadosPost);
         
         $objRepoMedico = new RepoMedico();
+
         return $objRepoMedico->salvar($obj);
-    }
+    
+        }
     
     public function alterarMedico($dadosPost){
     
         $obj = $this->factory($dadosPost);
+
         $objRepoMedico = new RepoMedico();
+        
         return $objRepoMedico->alterar($obj);
     }
 
     public function excluirMedico($dadosPost){
+        
         $obj = $this->factory($dadosPost);
         $objRepoMedico = new RepoMedico();
         return $objRepoMedico->excluir($obj);
@@ -40,6 +45,7 @@ class NegMedico {
             $objMedico->setTelefone($dados["telefone"]);
         }  
         if(isset($dados["id_especialidade"])){
+      
             $objMedico->setEspecialidade($dados["id_especialidade"]);
             
         }
@@ -48,9 +54,11 @@ class NegMedico {
     
     private function consultarMedico($dadosFiltro) {
         $dadosFiltroConsulta = $this->trataConsulta($dadosFiltro);  
-      
+    
         $objRepoMedico = new RepoMedico();
-        $arrDadosMedico = $objRepoMedico->listar($dadosFiltroConsulta);         
+
+        $arrDadosMedico = $objRepoMedico->listar($dadosFiltroConsulta);   
+       
         $listaObjMedico=null;
         if(count($arrDadosMedico)>0){
             foreach ($arrDadosMedico as $dadoMedico) {
@@ -116,30 +124,14 @@ class NegMedico {
     
     private function trataConsulta($dadosFiltro){
         $dadosFiltroConsulta=null;
-        if(isset($dadosFiltro["id"])){
-            if($dadosFiltro["id"]>0){
-                $dadosFiltroConsulta["id"] = $dadosFiltro["id"];
-            }
-        }
-        if(isset($dadosFiltro["nome"])){
-            if(strlen(trim($dadosFiltro["nome"]))>0){
-                $dadosFiltroConsulta["nome"] = trim($dadosFiltro["nome"]);
-            }
-        }
-        if(isset($dadosFiltro["crm"])){
-            if(strlen(trim($dadosFiltro["crm"]))>0){
-                $dadosFiltroConsulta["crm"] = trim($dadosFiltro["crm"]);
-            }
-        }
-        if(isset($dadosFiltro["telefone"])){
-            if(strlen(trim($dadosFiltro["telefone"]))>0){
-                $dadosFiltroConsulta["telefone"] = trim($dadosFiltro["telefone"]);
-            }
-        }
-        if(isset($dadosFiltro["id_especialidade"])){
-            if(strlen(trim($dadosFiltro["id_especialidade"]))>0){
-                $dadosFiltroConsulta["id_especialidade"] = trim($dadosFiltro["id_especialidade"]);
-            }
+      
+        foreach(array_keys($dadosFiltro) as $key){
+      
+       
+           if($dadosFiltro["$key"]>0){
+                    $dadosFiltroConsulta["$key"] = trim($dadosFiltro["$key"]);
+             }
+       
         }
         return $dadosFiltroConsulta;
     }

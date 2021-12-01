@@ -28,7 +28,7 @@ function salvarMedico() {
         type: 'POST',
         url: "controladores/IndexControlador.php",
         data: {
-            ACO_Descricao: acao, id: id, nome: nome, crm: crm, telefone: telefone, especialidade:especialidade        },
+            ACO_Descricao: acao, id: id, nome: nome, crm: crm, telefone: telefone, id_especialidade:especialidade        },
         dataType: 'json',
         async: false, // assincrono / nÃ£o assincrono
         encode: true,

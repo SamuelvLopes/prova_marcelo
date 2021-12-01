@@ -12,27 +12,26 @@
     try{
         // verifica se o controlado recebeu uma ação
 
-        
-
-        if(!isset($_POST["ACO_Descricao"])){
-            $arrStrJson["msgOp"] = "Ação nao encontrada!";
-        }else{
-            if(trim($_POST["ACO_Descricao"]) == ""){
-                $arrStrJson["msgOp"] = "Ação repassada em branco!";
-            }else{
-                $strAcao = trim($_POST["ACO_Descricao"]);
-                
-                if($strAcao == "Salvar"){                    
-                    $objNegMedico = new NegMedico();
+        if(isset($_POST["ACO_Descricao"])){
+			
+        switch (trim($_POST["ACO_Descricao"])) {
+			
+	    case '':
+		 $arrStrJson["msgOp"] = "Ação repassada em branco!";
+         break;
+		 
+	    case 'Salvar':
+		 $objNegMedico = new NegMedico();
                     if($objNegMedico->salvarMedico($_POST)){
                         $arrStrJson["statusOp"] = "true";
                         $arrStrJson["msgOp"] = "Cadastro realizado com sucesso!";
                     }else{
                         $arrStrJson["statusOp"] = "false";
                         $arrStrJson["msgOp"] = "Cadastro não realizado!";
-                    }                    
-                }elseif($strAcao == "Alterar"){
-                    $objNegMedico = new NegMedico();
+                    } 
+		break;
+		case 'Alterar':
+		 $objNegMedico = new NegMedico();
                    
                     if($objNegMedico->alterarMedico($_POST)){
                         $arrStrJson["statusOp"] = "true";
@@ -41,9 +40,9 @@
                         $arrStrJson["statusOp"] = "false";
                         $arrStrJson["msgOp"] = "Alteração não realizada!";
                     }
-                }elseif($strAcao == "Excluir"){
-                   
-                $objNegMedico = new NegMedico();
+		break;
+		case 'Excluir':
+		 $objNegMedico = new NegMedico();
 
                     if($objNegMedico->excluirMedico($_POST)){
                         $arrStrJson["statusOp"] = "true";
@@ -52,17 +51,19 @@
                         $arrStrJson["statusOp"] = "false";
                         $arrStrJson["msgOp"] = "exclusão não realizada!";
                     }
-
-                    
-                }elseif($strAcao == "Listar"){                                        
-                    $objNegMedico = new NegMedico();
+		break;
+		case 'Listar':
+		 $objNegMedico = new NegMedico();
                     $htmlRetorno = $objNegMedico->listarMedico($_POST);
                     $arrStrJson["msgOp"]="";
                     $arrStrJson["html"] = $htmlRetorno;
-                    $arrStrJson["statusOp"] = "true";                        
-                }elseif($strAcao == "Consultar"){                    
-                    $objNegMedico = new NegMedico();
+                    $arrStrJson["statusOp"] = "true";
+		break;
+		case 'Consultar':
+		
+		$objNegMedico = new NegMedico();
                     $objetoMedicoJson = $objNegMedico->consultaMedicoEdicao($_POST);  
+                  
                     if($objetoMedicoJson!=null){
                         $arrStrJson["msgOp"]="";
                         $arrStrJson["obj"] = $objetoMedicoJson;                        
@@ -72,9 +73,14 @@
                         $arrStrJson["msgOp"]="Medico não localizado";
                         $arrStrJson["obj"] = null;                        
                     }
-                }
-            }             
+		break;
+		}
+
+        }else{
+         $arrStrJson["msgOp"] = "Ação nao encontrada!";
         }
+
+       
     }catch(Exception $objException){
         $arrStrJson["statusOp"]  = "excecao";        
         $arrStrJson["msgOp"] = $objException->getMessage();        
